@@ -119,7 +119,7 @@ with open(base_path + '/' + d2v_tsne, "rb") as source:
 
 # COMMAND ----------
 
-p = scatter_comp(tour_data_pd, tsne_d2v)
+#p = scatter_comp(tour_data_pd, tsne_d2v)
 #displayHTML(p)
 
 # COMMAND ----------
@@ -145,7 +145,7 @@ with open(base_path + '/' + w2v_tsne, "rb") as source:
 
 # COMMAND ----------
 
-p = scatter_comp(tour_data_pd, tsne_w2v)
+#p = scatter_comp(tour_data_pd, tsne_w2v)
 #displayHTML(p)
 
 # COMMAND ----------
@@ -211,9 +211,3 @@ def bookers_converge_more(bookers, non_bookers, cluster_change_col):
 
 print('Based on {}, the hypothesis "Bookers converge more than non-bookers" is {} (p-value: {:.4f}).\n'.format('d2v_cluster_change', bookers_converge_more(bookers, non_bookers, 'd2v_cluster_change'), d2v_p_value))
 print('Based on {}, the hypothesis "Bookers converge more than non-bookers" is {} (p-value: {:.4f}).\n'.format('w2v_cluster_change', bookers_converge_more(bookers, non_bookers, 'w2v_cluster_change'), w2v_p_value))
-
-# COMMAND ----------
-
-from statsmodels.stats.weightstats import ttest_ind
-
-ttest_ind(bookers.d2v_cluster_change.apply(converged).astype(np.float), non_bookers.d2v_cluster_change.apply(converged).astype(np.float), 'two-sided')
